@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgis/postgis:16-3.4
+    container_name: gis-sim
+    environment:
+      POSTGRES_USER: gisadmin
+      POSTGRES_PASSWORD: gispassword
+      POSTGRES_DB: crisis_response
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql:/sql
+
+volumes:
+  postgres_data:
